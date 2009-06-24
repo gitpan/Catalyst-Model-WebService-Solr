@@ -4,10 +4,10 @@ NAME
 
 SYNOPSIS
         package MyApp::Model::Solr;
-    
-        use base qw( Catalyst::Model::WebService::Solr );
-    
-        __PACKAGE__->config(
+        
+    use base qw( Catalyst::Model::WebService::Solr );
+        
+    __PACKAGE__->config(
             server  => 'http://localhost:8080/solr/',
             options => {
                 autocommit => 1,
@@ -19,17 +19,24 @@ DESCRIPTION
     Catalyst application.
 
 METHODS
-  COMPONENT( )
-    passes your config options to WebService::Solr's "new" method.
+  solr( )
+    This is the WebService::Solr instance to which all methods are
+    delegated.
+
+        # delegates to solr->search behind the scenes
+        my $response = $c->model('Solr')->search( $q );
 
 SEE ALSO
-    * Catalyst
-    * WebService::Solr
+    *   Catalyst
+
+    *   WebService::Solr
 
 AUTHOR
     Brian Cassidy <bricas@cpan.org>
 
 COPYRIGHT AND LICENSE
+    Copyright 2008-2009 by Brian Cassidy
+
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
 

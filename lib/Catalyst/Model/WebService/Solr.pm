@@ -28,7 +28,7 @@ has 'solr' => (
     lazy_build => 1
 );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub _build_solr {
     my $self   = shift;
@@ -48,7 +48,10 @@ Catalyst::Model::WebService::Solr - Use WebService::Solr in your Catalyst applic
 
     package MyApp::Model::Solr;
     
-    use base qw( Catalyst::Model::WebService::Solr );
+    use Moose;
+    use namespace::autoclean;
+    
+    extends 'Catalyst::Model::WebService::Solr';
     
     __PACKAGE__->config(
         server  => 'http://localhost:8080/solr/',
@@ -93,7 +96,7 @@ Oleg Kostyuk E<lt>cub@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2009 by Brian Cassidy
+Copyright 2008-2010 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

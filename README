@@ -5,7 +5,10 @@ NAME
 SYNOPSIS
         package MyApp::Model::Solr;
     
-        use base qw( Catalyst::Model::WebService::Solr );
+        use Moose;
+        use namespace::autoclean;
+    
+        extends 'Catalyst::Model::WebService::Solr';
     
         __PACKAGE__->config(
             server  => 'http://localhost:8080/solr/',
@@ -40,7 +43,7 @@ CONTRIBUTORS
     Oleg Kostyuk <cub@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2008-2009 by Brian Cassidy
+    Copyright 2008-2010 by Brian Cassidy
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
